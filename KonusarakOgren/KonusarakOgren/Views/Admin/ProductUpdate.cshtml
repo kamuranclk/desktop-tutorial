@@ -1,0 +1,178 @@
+﻿@using Core.Entity
+@model (Product product,List<Category> cat)
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                        <li class="breadcrumb-item active">Form Elements</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Form Elements</h4>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="tab-pane show active" id="horizontal-form-preview">
+                        <form id="ProductForm" method="post" enctype="multipart/form-data" asp-controller="Admin" asp-action="ProductUpdate">
+                            <input type="hidden" value="@Model.product.Id" />
+                            <div class="row mb-3">
+                                <label for="inputEmail3" class="col-3 col-form-label">Kategori</label>
+                                <div class="col-9">
+                                    <select class="form-control" id="CategoryId" name="CategoryId">
+                                        @foreach (var item in Model.cat)
+                                        {
+                                            if (Model.product.Id == item.Id)
+                                            {
+                                                <option value="@item.Id" check="true">@item.Name</option>
+                                            }
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputEmail3" class="col-3 col-form-label">Ürün Adı</label>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" id="Name" name="Name" value="@Model.product.Name" placeholder="Ürün Adı">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="inputPassword3" class="col-3 col-form-label">Url</label>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" id="URL" onclick="urlcontrol()" value="@Model.product.URL" name="URL" placeholder="URL">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputPassword3" class="col-3 col-form-label">Kısa İçerik</label>
+                                <div class="col-9">
+                                    <textarea rows="5" class="form-control" id="ShortContent" name="ShortContent">@Model.product.ShortContent</textarea>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputPassword3" class="col-3 col-form-label">Kısa İçerik</label>
+                                <div class="col-9">
+                                    <textarea id="simplemde1" name="Contents">@Model.product.Contents</textarea>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="inputPassword3" class="col-3 col-form-label">İskonto Oranı</label>
+                                <div class="col-9">
+                                    <input type="number" class="form-control" id="discount" value="@Model.product.discount" name="discount" placeholder="İskonto Oranı">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputPassword3" class="col-3 col-form-label">Resim</label>
+                                <div class="col-9">
+                                    <input type="file" class="form-control" id="Image" name="Image" placeholder="Resim">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputPassword5" class="col-3 col-form-label">Sıra Numarası</label>
+                                <div class="col-9">
+                                    <input type="number" class="form-control" id="Rows" value="@Model.product.Rows" name="Rows" placeholder="Sıra Numarası">
+                                </div>
+                            </div>
+
+                            <div class="justify-content-end row">
+                                <div class="col-9">
+                                    <a href="javascript:void()" onclick="ProductForm()" class="btn btn-success">Güncelle</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div> <!-- end preview-->
+
+                </div>  <!-- end card-body -->
+            </div>  <!-- end card -->
+        </div>  <!-- end col -->
+
+    </div>
+
+
+</div>
+
+<script>
+    function ProductForm() {
+        if ($('#Name').val() !== "") {
+            if ($('#URL').val() === "") {
+                $('#URL').click();
+            }
+            var url = $("#ProductForm").attr("action");
+            var formData = new FormData();
+            formData.append("CategoryId", $("#CategoryId").val());
+            formData.append("Name", $("#Name").val());
+            formData.append("URL", $("#URL").val());
+            formData.append("Rows", $("#Rows").val());
+            formData.append("ShortContent", $("#ShortContent").val());
+            formData.append("Contents", $("#simplemde1").val());
+            formData.append("discount", $("#discount").val());
+            var fileInput = document.getElementById('Image');
+            for (var i = 0; i < fileInput.files.length; i++) {
+                formData.append(fileInput.files[i].Name, fileInput.files[i]);
+            }
+            formData.append("deneme", "debene");
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    if (result.status != 200) {
+                        window.location.href = "/Admin/Product";
+
+                    }
+                }
+            });
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    function urlcontrol() {
+        var deger = $('#Name').val();
+        mesajTemizle(deger);
+        function mesajTemizle(deger) {
+            var karakterler = {
+                Ç: 'c',
+                Ö: 'o',
+                Ş: 's',
+                İ: 'i',
+                I: 'i',
+                Ü: 'u',
+                Ğ: 'g',
+                ç: 'c',
+                ö: 'o',
+                ş: 's',
+                ı: 'i',
+                ü: 'u',
+                ğ: 'g',
+                " ": '-'
+            };
+
+            var stringtoarray = deger.split('');
+            for (var i = 0; i < stringtoarray.length; i++) {
+                stringtoarray[i] = karakterler[stringtoarray[i]] || stringtoarray[i];
+            }
+            var arraytostring = stringtoarray.join('');
+            var temizmesaj = arraytostring.replace(" ", "-").replace("--", "-").toLowerCase();
+            $('#URL').val(temizmesaj);
+        };
+    }
+</script>

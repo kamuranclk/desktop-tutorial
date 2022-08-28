@@ -1,0 +1,15 @@
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\obj\Debug\net6.0\Manager.csproj.AssemblyReference.cache
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\obj\Debug\net6.0\Manager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\obj\Debug\net6.0\Manager.AssemblyInfoInputs.cache
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\obj\Debug\net6.0\Manager.AssemblyInfo.cs
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\obj\Debug\net6.0\Manager.csproj.CoreCompileInputs.cache
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\bin\Debug\net6.0\Manager.deps.json
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\bin\Debug\net6.0\Manager.dll
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\bin\Debug\net6.0\Manager.pdb
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\bin\Debug\net6.0\Core.dll
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\bin\Debug\net6.0\Core.pdb
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\obj\Debug\net6.0\Manager.csproj.CopyComplete
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\obj\Debug\net6.0\Manager.dll
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\obj\Debug\net6.0\refint\Manager.dll
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\obj\Debug\net6.0\Manager.pdb
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Manager\obj\Debug\net6.0\ref\Manager.dll

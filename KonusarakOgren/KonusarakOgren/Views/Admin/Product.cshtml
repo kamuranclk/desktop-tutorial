@@ -1,0 +1,78 @@
+﻿@using Core.Entity
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model List<Product>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <a href="/Admin/ProductInsert" class="btn btn-success">Ekle</a>
+                </div>
+                <h4 class="page-title">Ürünler</h4>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="alt-pagination-preview">
+                            <table id="alternative-page-datatable" class="table table-striped dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Ürün Adı</th>
+                                        <th>Kategori Adı</th>
+                                        <th>Sira Numarası</th>
+                                        <th>Durum</th>
+                                        <th>Durum</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            <td>
+                                            <td>
+                                            <td>@item.Rows</td>
+                                            <td>
+                                                        @if (item.Status == true)
+                                                        {
+                                                    <input type="checkbox" id="switch3" checked="" data-switch="success">
+                                                    <label for="switch3" data-on-label="Aktif" data-off-label="Pasif"></label>
+                                                        }
+                                                        else
+                                                        {
+                                                    <input type="checkbox" id="switch3" data-switch="success">
+                                                    <label for="switch3" data-on-label="Aktif" data-off-label="Pasif"></label>
+                                                        }
+                                            </td>
+                                            <td>
+                                                <a href="/Admin/ProductUpdate/@item.Id" class="btn btn-primary btn-sm">Güncelle</a>
+                                                <a href="javascript:void()s" onclick="DeleteProduct(@item.Id)" class="btn btn-danger btn-sm">Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+                        </div> <!-- end preview-->
+
+                    </div> <!-- end tab-content-->
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div> <!-- end row-->
+
+</div> <!-- container -->
+
+

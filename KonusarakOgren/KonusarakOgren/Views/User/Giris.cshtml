@@ -1,0 +1,134 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="section-conten padding-y" style="min-height:84vh" id="Login">
+
+    <div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Sign in</h4>
+            <form id="LoginForm" method="post" enctype="multipart/form-data" asp-controller="User" asp-action="UserInsert">
+                <div class="form-group">
+                    <input name="Email" class="form-control" id="Email" placeholder="Eposta" type="text">
+                </div>
+                <div class="form-group">
+                    <input name="Password" id="Password" class="form-control" placeholder="Şifreniz" type="password">
+                </div>
+
+                <div class="form-group">
+                    <a href="#" class="float-right">Forgot password?</a>
+                    <label class="float-left custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> <div class="custom-control-label"> Remember </div> </label>
+                </div>
+                <div class="form-group">
+                    <a href="javascript:void()" onclick="LoginForm()" class="btn btn-primary btn-block"> Login  </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <p class="text-center mt-4">Don't have account? <a href="javascript:void()" onclick="hide()">Sign up</a></p>
+    <br><br>
+
+</section>
+<section class="section-content padding-y" id="Register">
+    <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+        <article class="card-body">
+            <header class="mb-4"><h4 class="card-title">Sign up</h4></header>
+            <form id="Register" method="post" enctype="multipart/form-data" asp-controller="User" asp-action="Login">
+                <div class="form-group">
+                    <label>Adınız Soyadınız</label>
+                    <input type="text" id="NameSurname" name="NameSurname" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Epostanız</label>
+                    <input type="email" id="Email" name="Email" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Şifreniz</label>
+                    <input type="password" id="Password" name="Password" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                    <a href="javascript:void()" onclick="Registerform()" class="btn btn-primary btn-block"> Kaydol  </a>
+                </div>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" checked="">
+                        <div class="custom-control-label"> I am agree with <a href="#">terms and contitions</a>  </div>
+                    </label>
+                </div> <!-- form-group end.// -->
+            </form>
+        </article><!-- card-body.// -->
+    </div> <!-- card .// -->
+    <p class="text-center mt-4">Have an account? <a href="javascript:void()" onclick="show()">Log In</a></p>
+    <br><br>
+
+</section>
+<script>
+    window.onload = function () {
+        $("#Register").hide();
+    };
+    function hide() {
+        $("#Register").show();
+        $("#Login").hide();
+    } function show() {
+        $("#Register").hide();
+        $("#Login").show();
+    }
+</script>
+<script>
+    function Registerform() {
+        var url = $("#Register").attr("action");
+        var formData = new FormData();
+        formData.append("NameSurname", $("#NameSurname").val());
+        formData.append("Email", $("#Email").val());
+        formData.append("Password", $("#Password").val());
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if (result.status != 200){
+                    swal.fire({
+                        type: 'success',
+                        title: 'Kaydınız Oluşturulmuştur',
+                    });
+                    $("#Register").hide();
+                    $("#Login").show();
+                }else{
+                    swal.fire({
+                        type: 'error',
+                        title: 'Bu Eposta Zaten Kayıtlı',
+                    });
+                }
+            }
+        });
+    }
+
+    function LoginForm() {
+        var url = $("#Register").attr("action");
+        var formData = new FormData();
+        formData.append("Email", $("#Email").val());
+        formData.append("Password", $("#Password").val());
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if (result.status != 200) {
+                    swal.fire({
+                        type: 'success',
+                        title: 'Giriş Başarılı Anasayfaya Yönlendiriliyorsunuz',
+                        timer: 4000,
+                    }).then(function () {
+                        window.location.href = "/";
+                    });
+
+                } 
+            }
+        });
+    }
+</script>

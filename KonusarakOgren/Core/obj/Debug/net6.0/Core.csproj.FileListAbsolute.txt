@@ -1,0 +1,12 @@
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\obj\Debug\net6.0\Core.csproj.AssemblyReference.cache
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\obj\Debug\net6.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\obj\Debug\net6.0\Core.AssemblyInfoInputs.cache
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\obj\Debug\net6.0\Core.AssemblyInfo.cs
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\obj\Debug\net6.0\Core.csproj.CoreCompileInputs.cache
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\bin\Debug\net6.0\Core.deps.json
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\bin\Debug\net6.0\Core.dll
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\bin\Debug\net6.0\Core.pdb
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\obj\Debug\net6.0\Core.dll
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\obj\Debug\net6.0\refint\Core.dll
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\obj\Debug\net6.0\Core.pdb
+C:\Users\denem\Desktop\projeler\KonusarakOgren\Core\obj\Debug\net6.0\ref\Core.dll
